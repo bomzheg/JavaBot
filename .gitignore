@@ -1,4 +1,4 @@
 # Project exclude paths
 /target/
-/*/resources/conf/*.ini
+*/resources/conf/*.ini
 .idea
