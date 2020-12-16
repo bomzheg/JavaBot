@@ -2,6 +2,7 @@ package ru.bomzheg.pigra;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 public class PigraBot extends TelegramLongPollingBot {
 
     private String botToken;
+    private String botUsername;
     private long logChatId;
     private static Logger logger;
 
@@ -23,7 +25,7 @@ public class PigraBot extends TelegramLongPollingBot {
         this.logChatId = logChatId;
     }
 
-    public void setToken(String token) {
+    public void setBotToken(String token) {
         botToken = token;
     }
 
@@ -34,7 +36,11 @@ public class PigraBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "betaCurChangeBot";
+        return botUsername;
+    }
+
+    public void setBotUsername(String botUsername) {
+        this.botUsername = botUsername;
     }
 
     @Override
@@ -42,16 +48,7 @@ public class PigraBot extends TelegramLongPollingBot {
         if (!(update.hasMessage() && update.getMessage().hasText())) {
             return;
         }
-        SendMessage message = new SendMessage();
-        message.setChatId(update.getMessage().getChatId().toString());
-        message.setText("Получено " + update.getMessage().getText());
-        try {
-            execute(message);
-        } catch (TelegramApiException e) {
-            logger.log(Level.WARNING, "cant send message", e);
-            sendStackTrace(e);
-
-        }
+        sendMessage(update.getMessage().getChatId(), "Получено " + update.getMessage().getText());
     }
 
     private void sendStackTrace(Exception e) {
@@ -68,5 +65,24 @@ public class PigraBot extends TelegramLongPollingBot {
             logger.log(Level.SEVERE, "cant send log message", e);
             e.printStackTrace();
         }
+    }
+    public void onStartUp() {
+        sendMessage(logChatId, "Bot started");
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    private Message sendMessage(long chatId, String text) {
+        SendMessage message = new SendMessage();
+        message.setChatId(String.valueOf(chatId));
+        message.setText(text);
+        Message sentMessage;
+        try {
+            sentMessage = execute(message);
+        } catch (TelegramApiException e) {
+            logger.log(Level.WARNING, "cant send message", e);
+            sendStackTrace(e);
+            sentMessage = null;
+        }
+        return sentMessage;
     }
 }
