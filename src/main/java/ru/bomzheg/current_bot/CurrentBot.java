@@ -2,25 +2,17 @@ package ru.bomzheg.current_bot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.bomzheg.dispatcher.Executor;
-
-import java.util.logging.Logger;
+import ru.bomzheg.dispatcher.Dispatcher;
 
 
 public class CurrentBot extends TelegramLongPollingBot {
 
     private String botToken;
     private String botUsername;
-    private long logChatId;
-    private static final Logger logger = Logger.getLogger(CurrentBot.class.getName());
-    private Executor executor;
+    private Dispatcher dispatcher;
 
-    public void setExecutor(Executor executor) {
-        this.executor = executor;
-    }
-
-    public void setLogChatId(long logChatId) {
-        this.logChatId = logChatId;
+    public void setDispatcher(Dispatcher dispatcher) {
+        this.dispatcher = dispatcher;
     }
 
     public void setBotToken(String token) {
@@ -43,6 +35,6 @@ public class CurrentBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        executor.processUpdate(update);
+        dispatcher.processUpdate(update);
     }
 }

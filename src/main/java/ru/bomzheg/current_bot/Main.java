@@ -21,11 +21,8 @@ public class Main {
 
         CurrentBot currentBot = new CurrentBot();
 
-        Executor executor = new ExecutorImpl();
-        currentBot.setExecutor(executor);
-
         Dispatcher dispatcher = new DispatcherImp();
-        executor.setDispatcher(dispatcher);
+        currentBot.setDispatcher(dispatcher);
 
         SendHelper sendHelper = new SendHandlerImp(currentBot);
 
@@ -52,7 +49,6 @@ public class Main {
     public static void configureBot(CurrentBot currentBot) {
         logger.fine("Configuring bot with token and log chat id ...");
         currentBot.setBotToken(botConfig.getBotToken());
-        currentBot.setLogChatId(botConfig.getLogChatId());
         currentBot.setBotUsername(botConfig.getBotUsername());
     }
 }
