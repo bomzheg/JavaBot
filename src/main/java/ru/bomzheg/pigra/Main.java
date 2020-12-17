@@ -29,11 +29,11 @@ public class Main {
 
         SendHelper sendHelper = new SendHandlerImp(currentBot);
 
-        Handler echoHandler = new EchoHandler(sendHelper, "Received:\n\n");
-        echoHandler.register(dispatcher);
-
         Handler startHandler = new StartHandler(sendHelper);
         startHandler.register(dispatcher);
+
+        Handler echoHandler = new EchoHandler(sendHelper, "Received:\n\n");
+        echoHandler.register(dispatcher);
 
         configureBot(currentBot);
 
