@@ -1,4 +1,4 @@
-package ru.bomzheg.pigra.config;
+package ru.bomzheg.current_bot.config;
 
 import java.io.IOException;
 import java.io.InputStream;

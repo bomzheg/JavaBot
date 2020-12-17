@@ -1,12 +1,12 @@
-package ru.bomzheg.pigra;
+package ru.bomzheg.current_bot;
 
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.bomzheg.dispatcher.*;
-import ru.bomzheg.pigra.config.BotConfig;
-import ru.bomzheg.pigra.handlers.EchoHandler;
-import ru.bomzheg.pigra.handlers.StartHandler;
+import ru.bomzheg.current_bot.config.BotConfig;
+import ru.bomzheg.current_bot.handlers.EchoHandler;
+import ru.bomzheg.current_bot.handlers.StartHandler;
 
 import java.util.logging.Logger;
 

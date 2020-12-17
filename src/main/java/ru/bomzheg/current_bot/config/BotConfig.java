@@ -1,4 +1,4 @@
-package ru.bomzheg.pigra.config;
+package ru.bomzheg.current_bot.config;
 
 public class BotConfig  extends Config{
 

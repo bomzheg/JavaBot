@@ -1,13 +1,9 @@
-package ru.bomzheg.pigra;
+package ru.bomzheg.current_bot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.bomzheg.dispatcher.Executor;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
