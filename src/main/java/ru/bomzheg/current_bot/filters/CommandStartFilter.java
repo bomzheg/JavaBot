@@ -1,4 +1,4 @@
-package ru.bomzheg.pigra.filters;
+package ru.bomzheg.current_bot.filters;
 
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.api.objects.Message;
