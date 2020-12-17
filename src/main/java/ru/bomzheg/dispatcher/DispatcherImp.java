@@ -2,6 +2,8 @@ package ru.bomzheg.dispatcher;
 
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +49,40 @@ public class DispatcherImp implements Dispatcher {
             }
         }
         return true;
+    }
+
+    @Override
+    public void processUpdate(Update update) {
+        Handler handler;
+        if (update.getMessage() != null) {
+            handler = getHandlerForMessage(update.getMessage());
+            if (handler != null) {
+                execute(handler, update.getMessage());
+            }
+        }
+
+    }
+
+    @Override
+    public void execute(Handler handler, BotApiObject event) {
+        try{
+            handler.handle(event);
+        } catch (TelegramApiException e) {
+            CatchErrors(e, event);
+        }
+    }
+
+    @Override
+    public void CatchErrors(Exception exception, BotApiObject event) {
+        try {
+            throw exception;
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
