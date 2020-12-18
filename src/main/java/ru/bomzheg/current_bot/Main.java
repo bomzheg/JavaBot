@@ -3,20 +3,21 @@ package ru.bomzheg.current_bot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ru.bomzheg.SnakeGram.*;
 import ru.bomzheg.current_bot.config.BotConfig;
 import ru.bomzheg.current_bot.handlers.EchoHandler;
 import ru.bomzheg.current_bot.handlers.StartHandler;
 
-import java.util.logging.Logger;
 
 public class Main {
     private static BotConfig botConfig;
-    private static Logger logger;
+    private static final Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        configureLogger();
-
         botConfig = new BotConfig();
 
         CurrentBot currentBot = new CurrentBot();
@@ -42,12 +43,9 @@ public class Main {
         }
     }
 
-    public static void configureLogger() {
-        logger = Logger.getLogger(Main.class.getName());
-    }
-
     public static void configureBot(CurrentBot currentBot) {
-        logger.fine("Configuring bot with token and log chat id ...");
+        logger.info("Configuring bot with token and log chat id ...");
+
         currentBot.setBotToken(botConfig.getBotToken());
         currentBot.setBotUsername(botConfig.getBotUsername());
     }
