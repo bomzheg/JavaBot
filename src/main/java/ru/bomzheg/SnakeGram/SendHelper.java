@@ -14,5 +14,6 @@ public interface SendHelper {
      * @return message on success
      * @throws TelegramApiException on failure error from telegram
      */
+    @SuppressWarnings("UnusedReturnValue")
     Message sendMessage(long chatId, String text) throws TelegramApiException;
 }

@@ -22,6 +22,7 @@ public class EchoHandler implements Handler {
         this.prefix = prefix;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void handle(BotApiObject event) throws TelegramApiException {
         Message message = (Message) event;
@@ -29,6 +30,7 @@ public class EchoHandler implements Handler {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public void register(Dispatcher dispatcher) {
         dispatcher.registerMessageHandler(this, new ArrayList<>());

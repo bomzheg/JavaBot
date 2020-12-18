@@ -6,6 +6,7 @@ import ru.bomzheg.SnakeGram.Filter;
 
 public class CommandStartFilter  implements Filter {
 
+    /** {@inheritDoc} */
     @Override
     public boolean check(BotApiObject event) {
         Message message = (Message) event;

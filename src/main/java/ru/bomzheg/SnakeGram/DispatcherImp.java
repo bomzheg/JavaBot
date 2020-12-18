@@ -24,6 +24,7 @@ public class DispatcherImp implements Dispatcher {
 
     private final Map<Class<? extends BotApiObject>, List<RegisteredHandler>> handlers = new HashMap<>();
 
+    /** {@inheritDoc} */
     @Override
     public void registerMessageHandler(Handler handler, List<Filter> filters) {
         List<RegisteredHandler> registeredHandlers = handlers.getOrDefault(Message.class, new ArrayList<>());
@@ -31,6 +32,7 @@ public class DispatcherImp implements Dispatcher {
         handlers.put(Message.class, registeredHandlers);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Handler getHandlerForMessage(Message message) {
         if (handlers.containsKey(Message.class)) {
@@ -42,6 +44,8 @@ public class DispatcherImp implements Dispatcher {
         }
         return null;
     }
+
+    /** {@inheritDoc} */
     public boolean checkFilters(List<Filter> filters, BotApiObject event) {
         for (Filter filter: filters) {
             if (!filter.check(event)) {
@@ -51,6 +55,7 @@ public class DispatcherImp implements Dispatcher {
         return true;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void processUpdate(Update update) {
         Handler handler;
@@ -63,6 +68,7 @@ public class DispatcherImp implements Dispatcher {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public void execute(Handler handler, BotApiObject event) {
         try{
@@ -72,6 +78,7 @@ public class DispatcherImp implements Dispatcher {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void CatchErrors(Exception exception, BotApiObject event) {
         try {

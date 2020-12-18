@@ -12,7 +12,10 @@ public class SendHandlerImp implements SendHelper {
         this.bot = bot;
     }
 
+
+    /** {@inheritDoc} */
     @SuppressWarnings("UnusedReturnValue")
+    @Override
     public Message sendMessage(long chatId, String text) throws TelegramApiException {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));

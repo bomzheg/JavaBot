@@ -6,6 +6,7 @@ public class BotConfig  extends Config{
     private long logChatId;
     private String botUsername;
 
+    /** {@inheritDoc} */
     protected String getDefaultPropertiesFileName() {
         return "bot_config.properties";
     }
@@ -18,6 +19,7 @@ public class BotConfig  extends Config{
         return botToken;
     }
 
+    /** {@inheritDoc} */
     protected void loadConfig() {
         loadConfigFromProperties();
         loadConfigFromEnv();
