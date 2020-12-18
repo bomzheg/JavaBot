@@ -2,7 +2,7 @@ package ru.bomzheg.current_bot.filters;
 
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.bomzheg.dispatcher.Filter;
+import ru.bomzheg.SnakeGram.Filter;
 
 public class CommandStartFilter  implements Filter {
 

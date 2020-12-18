@@ -3,9 +3,9 @@ package ru.bomzheg.current_bot.handlers;
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.bomzheg.dispatcher.Dispatcher;
-import ru.bomzheg.dispatcher.Handler;
-import ru.bomzheg.dispatcher.SendHelper;
+import ru.bomzheg.SnakeGram.Dispatcher;
+import ru.bomzheg.SnakeGram.Handler;
+import ru.bomzheg.SnakeGram.SendHelper;
 
 import java.util.ArrayList;
 

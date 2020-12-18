@@ -1,4 +1,4 @@
-package ru.bomzheg.dispatcher;
+package ru.bomzheg.SnakeGram;
 
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;

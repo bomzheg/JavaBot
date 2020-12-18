@@ -2,7 +2,7 @@ package ru.bomzheg.current_bot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.bomzheg.dispatcher.Dispatcher;
+import ru.bomzheg.SnakeGram.Dispatcher;
 
 
 public class CurrentBot extends TelegramLongPollingBot {
